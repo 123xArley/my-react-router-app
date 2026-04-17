@@ -5,6 +5,9 @@ import Home from "./components/Home"
 import Dashboard from "./components/DashBoard"
 import Overview from "./components/Overview"
 import Settings from "./components/Settings"
+import Profile from "./components/Profile";
+import ProtectedRoute from "./components/ProtectedRoute";
+import NotFound from "./components/NotFound";
 
 function App() {
 
@@ -40,8 +43,12 @@ function App() {
           }>
           </Route>
         </Route>
-        
-        
+        <Route path="/profile" element={
+          <ProtectedRoute isAuthenticated={false}>
+            <Profile />
+          </ProtectedRoute>
+        }></Route>
+        <Route path="*" element={<NotFound />}></Route>
       </Routes>
 
     </div>
